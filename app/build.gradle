@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    buildTypes {
+
+        debug {
+            debuggable System.getProperty('release') == null
+            jniDebuggable System.getProperty('release') == null
+        }
+
+        release {
+            debuggable false
+            jniDebuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation supportDependencies.values()
+    implementation diDependencies.values()
+    implementation networkDependencies.values()
+
+    testImplementation testDependencies.junit,
+            testDependencies.mockk,
+            testDependencies.arch,
+            testDependencies.coroutines_test
+    androidTestImplementation testDependencies.junit_instrumentation
+    androidTestImplementation testDependencies.mockk_android
+    androidTestImplementation testDependencies.test_core
+    androidTestImplementation testDependencies.espresso
+    debugImplementation (testDependencies.fragment_testing) {
+        exclude group: "androidx.test", module: "core"
+    }
+}

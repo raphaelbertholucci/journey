@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Journey</string>
+    <string name="generic_error">Unexpected error occurred. Try again later.</string>
+    <string name="retry"><u>Retry</u></string>
+    <string name="ok"><u>OK</u></string>
+    <string name="day">Day %s</string>
+</resources>
