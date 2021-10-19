@@ -6,7 +6,6 @@ plugins {
 
 android {
     buildTypes {
-
         debug {
             debuggable System.getProperty('release') == null
             jniDebuggable System.getProperty('release') == null
@@ -38,7 +37,7 @@ dependencies {
     androidTestImplementation testDependencies.mockk_android
     androidTestImplementation testDependencies.test_core
     androidTestImplementation testDependencies.espresso
-    debugImplementation (testDependencies.fragment_testing) {
+    debugImplementation(testDependencies.fragment_testing) {
         exclude group: "androidx.test", module: "core"
     }
 }

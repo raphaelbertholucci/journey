@@ -26,7 +26,7 @@ class MainViewModel(private val getJourneys: GetJourneys) : ViewModel() {
         getJourneys()
     }
 
-    private fun getJourneys() {
+    fun getJourneys() {
         getJourneys(Unit)
             .onStart { _journeys.showLoading() }
             .onCompletion { _journeys.hideLoading() }

@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.bertholucci.journey.R
 import com.bertholucci.journey.common.base.BaseActivity
@@ -21,10 +22,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         addObservers()
+        addListeners()
     }
 
     private fun addObservers() {
         viewModel.journeys.observe(this) { response ->
+            binding.swipe.isRefreshing = false
             response.fold(
                 error = ::handleError,
                 loading = { display(loading = true) },
@@ -36,12 +39,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
+    private fun addListeners() {
+        binding.swipe.setOnRefreshListener {
+            viewModel.getJourneys()
+        }
+    }
+
     private fun handleError(throwable: Throwable) {
         throwable.message?.let { Log.i("ERROR", it) }
         display(error = true)
     }
 
     private fun setupUI(list: List<Journey>) {
+        binding.swipe.setColorSchemeColors(ContextCompat.getColor(this, R.color.blue))
         binding.rvItems.adapter = MainAdapter(list) { journey ->
             showDialog(journey)
         }
