@@ -68,6 +68,8 @@ ext {
             mockk                : "io.mockk:mockk:$mockk_version",
             mockk_android        : "io.mockk:mockk-android:$mockk_version",
             coroutines_test      : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test_version",
+            kotlin_test          : "org.jetbrains.kotlin:kotlin-test:$kotlin_version",
+            kotlin_test_junit    : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     ]
 
     diDependencies = [
@@ -76,6 +78,6 @@ ext {
     ]
 
     networkDependencies = [
-            gson             : "com.google.code.gson:gson:$gson_version"
+            gson: "com.google.code.gson:gson:$gson_version"
     ]
 }
