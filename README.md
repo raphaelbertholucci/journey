@@ -5,7 +5,7 @@ An app to see information about your journey!
 
 ## Used Technologies
 
-The code is organized using a Multi Module Project Structure with MVVM and some technologies, like:
+The code is organized using some technologies, like:
   * <b>Clean Architecture</b> and <b>MVVM</b> for the app structure
   * <b>Koin</b> for dependency injection
   * <b>Coroutines</b> with <b>Flow</b> for async tasks
